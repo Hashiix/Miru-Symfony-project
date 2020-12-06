@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div id="animes">
+        {% for anime in animes %}
+            <strong>{{ anime.title }}</strong> - {{ anime.description }}<br/>
+        {% else %}
+            Il n'y a aucun anime pour l'instant, soyez le premier à en écrire un.
+        {% endfor %}
+    </div>
+
+    <form method="post">
+        <div>
+            <label for="">Title</label><br/>
+            <input type="text" id="title" name="title">
+        </div>
+
+        <div>
+            <label for="">Description</label><br/>
+            <textarea id="description" name="description"></textarea><br/>
+        </div>
+    </from>
+
+    <input type="submit" value="Ajouter">
+
+{% endblock %}
