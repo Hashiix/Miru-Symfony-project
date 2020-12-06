@@ -5,23 +5,26 @@
     <div id="animes">
         {% for anime in animes %}
             <strong>{{ anime.title }}</strong> - {{ anime.description }}<br/>
+            <a href="{{ path('edit', {"id": anime.id}) }}" class="btn btn-sm btn-outline-secondary">Modifier </a>
+            <a href="{{ path('delete', {"id": anime.id}) }}" class="btn btn-sm btn-outline-secondary" onclick="return confirm('Etes-vous sur de vouloir le supprimer ?')">Supprimer</a> <br/>
         {% else %}
             Il n'y a aucun anime pour l'instant, soyez le premier à en écrire un.
         {% endfor %}
     </div>
 
-    <form method="post">
-        <div>
-            <label for="">Title</label><br/>
-            <input type="text" id="title" name="title">
-        </div>
+    <h1 id="add">Ajouter un Anime</h1>
 
-        <div>
-            <label for="">Description</label><br/>
-            <textarea id="description" name="description"></textarea><br/>
-        </div>
-    </from>
+    {% form_theme animeForm 'bootstrap_4_layout.html.twig' %}
 
-    <input type="submit" value="Ajouter">
+    {{ form_start(animeForm) }}
+
+    {{ form_row(animeForm.title, {'attr': {'placeholder': "Titre de l'anime"}}) }}
+    {{ form_row(animeForm.description, {'attr': {'placeholder': "Description de l'anime", 'rows': 5, 'cols': 60}}) }}
+
+    <div id="submit">
+        <input type="submit" class="btn btn-warning" value="Ajouter">
+    </div>
+
+    {{ form_end(animeForm) }}
 
 {% endblock %}
