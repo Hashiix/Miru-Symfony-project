@@ -1,3 +1,7 @@
+* {
+    text-decoration: none;
+    list-style: none;
+}
 html {
     background-image: url("../img/fireforce.png");
     background-attachment: fixed;
@@ -8,6 +12,68 @@ body {
     padding: 1em;
     border-radius: 25px;
 }
+
+/* --Navbar-- */
+
+header {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    top: 0;
+}
+#menu {
+    padding: 1%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+ul {
+    display: flex;
+    margin-right: 30px;
+}
+li {
+    margin-right: 2.1vw;
+    font-size: max(1.5vw, 20px);
+    font-weight: bold;
+}
+li a {
+    color: black;
+}
+#tabs::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: black;
+    transition: width .3s;
+}
+#tabs:hover::after {
+    width: 100%;
+    transition: width .3s;
+}
+#tabs:hover {
+    color: black;
+    text-decoration: none;
+}
+#headerdisconnect {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 16%;
+    font-size: max(1vw, 15px);
+}
+
+/* --Login/Sign in-- */
+
+#already {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2%;
+}
+
 #submit {
     display: flex;
     justify-content: center;

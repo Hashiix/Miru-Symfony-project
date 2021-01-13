@@ -9,6 +9,25 @@
             <link rel="stylesheet" type="text/css" href="../../css/style.css">
         {% endblock %}
     </head>
+
+    <header>
+        <nav id="menu">
+            <ul id="burger">
+                <li><a id="tabs" href="{{ path('app_list_index') }}">Accueil</a></li>
+            </ul>
+            <div id="headerdisconnect">
+                {% if not app.user %}
+                {% else %}
+                    <p>Bonjour {{ app.user.username }} (<a href="{{ path('app_login_logout') }}">se déconnecter</a>)</p>
+                {% endif %}
+            </div>
+            <ul id="burger">
+                <li><a id="tabs" href="{{ path('app_login_login') }}">Connexion</a></li>
+                <li><a id="tabs" href="{{ path('app_signin_index') }}">Inscription</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <body>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}

@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ListController extends AbstractController
 {
     /**
-     * @Route("", name="index")
+     * @Route("")
      */
     public function index(EntityManagerInterface $em, AnimeRepository $repo, Request $request)
     {

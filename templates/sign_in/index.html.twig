@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% form_theme signInForm 'bootstrap_4_layout.html.twig' %}
+
+    {{ form_start(signInForm) }}
+
+    {{ form_row(signInForm.username, {'attr': {'placeholder': "Votre pseudo"}, 'label': "Pseudo"}) }}
+    {{ form_row(signInForm.password, {'attr': {'placeholder': "Votre mot de passe"}, 'label': "Mot de passe"}) }}
+    {{ form_row(signInForm.passwordVerify, {'attr': {'placeholder': "Confirmez votre mot de passe"}, 'label': "Confirmation du mot de passe"}) }}
+    {{ form_row(signInForm.email, {'attr': {'placeholder': "Votre adresse email"}, 'label': "Adresse email"}) }}
+
+    <div id="submit">
+        <button type="submit" class="btn btn-warning">S'inscrire</button>
+    </div>
+
+    {{ form_end(signInForm) }}
+
+    <p id="already">Vous avez déjà un compte ? <a href={{ path('app_login_login') }}>Connectez-vous</a></p>
+
+{% endblock %}
