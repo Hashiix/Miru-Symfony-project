@@ -14,13 +14,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class ListController extends AbstractController
 {
     /**
-     * @Route("")
+     * @Route("", name="index")
      */
     public function index(EntityManagerInterface $em, AnimeRepository $repo, Request $request)
     {
         $anime = new Anime;
 
         $form = $this->createFormBuilder($anime)
+            ->add('image')
             ->add('title')
             ->add('description')
             ->getForm()
@@ -34,7 +35,7 @@ class ListController extends AbstractController
         }
 
         return $this->render('list/index.html.twig', [
-            'animes' => $repo->findBy(array(), array('id'=>'DESC'), 8),
+            'animes' => $repo->findBy(array(), array('title'=>'ASC'), 8),
             'animeForm' => $form->createView()
         ]);
     }
@@ -48,6 +49,7 @@ class ListController extends AbstractController
     public function edit(Anime $anime, EntityManagerInterface $em, Request $request): Response
     {
         $form = $this->createFormBuilder($anime)
+            ->add('image')
             ->add('title')
             ->add('description')
             ->getForm()

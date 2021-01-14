@@ -9,10 +9,11 @@
     {{ form_start(animeForm) }}
 
     {{ form_row(animeForm.title, {'attr': {'placeholder': "Titre de l'anime"}}) }}
+    {{ form_row(animeForm.image, {'attr': {'placeholder': "Lien vers l'image"}}) }}
     {{ form_row(animeForm.description, {'attr': {'placeholder': "Description de l'anime", 'rows': 5, 'cols': 60}}) }}
 
     <div id="submit">
-        <input type="submit" class="btn btn-warning" value="Modifier">
+        <input type="submit" class="btn btn-info" value="Modifier">
     </div>
 
     {{ form_end(animeForm) }}

@@ -43,7 +43,7 @@
 
 html {
   font-family: sans-serif;
-  line-height: 1.15;
+  line-height: 2;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   -ms-overflow-style: scrollbar;
@@ -75,7 +75,6 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
   font-size: max(.8, .6vw);
-  margin-top: 0;
 }
 
 abbr[title],

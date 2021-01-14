@@ -12,11 +12,11 @@
     {{ form_row(signInForm.email, {'attr': {'placeholder': "Votre adresse email"}, 'label': "Adresse email"}) }}
 
     <div id="submit">
-        <button type="submit" class="btn btn-warning">S'inscrire</button>
+        <button type="submit" class="btn btn-info">S'inscrire</button>
     </div>
 
     {{ form_end(signInForm) }}
 
-    <p id="already">Vous avez déjà un compte ? <a href={{ path('app_login_login') }}>Connectez-vous</a></p>
+    <p id="already">Vous avez déjà un compte ? <a href={{ path('app_login_login') }}><strong>Connectez-vous</strong></a></p>
 
 {% endblock %}
