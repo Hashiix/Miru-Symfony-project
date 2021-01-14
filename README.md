@@ -1,5 +1,5 @@
 # Miru-Symfony-project
 
-CRUD on a list with a form, PHP/Symfony exercise.
+CRUD on a list with a form by authentification, PHP/Symfony exercise. 
 
-![alt text](https://nsa40.casimages.com/img/2020/12/06/201206125816407978.png)
+![alt text](https://nsa40.casimages.com/img/2021/01/14/210114102214946147.png)
