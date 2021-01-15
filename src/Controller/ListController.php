@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Anime;
 use App\Repository\AnimeRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -45,6 +46,7 @@ class ListController extends AbstractController
      * @param Anime $anime
      * @param Request $request
      * @return Response
+     * @IsGranted("ROLE_USER")
      */
     public function edit(Anime $anime, EntityManagerInterface $em, Request $request): Response
     {
@@ -73,6 +75,7 @@ class ListController extends AbstractController
      * @Route("anime/{id}/delete", name="delete")
      * @param Anime $anime
      * @return RedirectResponse
+     * @IsGranted("ROLE_USER")
      */
     public function delete(Anime $anime, EntityManagerInterface $em): RedirectResponse
     {
