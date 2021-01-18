@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MemberRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -62,6 +64,22 @@ class Member implements UserInterface
      * )
      */
     public $passwordVerify;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Anime::class, mappedBy="createdBy")
+     */
+    private $createdBy;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Anime::class, mappedBy="updatedBy")
+     */
+    private $updatedBy;
+
+    public function __construct()
+    {
+        $this->createdBy = new ArrayCollection();
+        $this->updatedBy = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -128,5 +146,59 @@ class Member implements UserInterface
     public function getRoles()
     {
         return ['ROLE_USER'];
+    }
+
+    /**
+     * @return Collection|Anime[]
+     */
+    public function getCreatedBy(): Collection
+    {
+        return $this->createdBy;
+    }
+
+    public function addCreatedBy(Anime $createdBy): self
+    {
+        if (!$this->createdBy->contains($createdBy)) {
+            $this->createdBy[] = $createdBy;
+            $createdBy->addCreatedBy($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCreatedBy(Anime $createdBy): self
+    {
+        if ($this->createdBy->removeElement($createdBy)) {
+            $createdBy->removeCreatedBy($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Anime[]
+     */
+    public function getUpdatedBy(): Collection
+    {
+        return $this->updatedBy;
+    }
+
+    public function addUpdatedBy(Anime $updatedBy): self
+    {
+        if (!$this->updatedBy->contains($updatedBy)) {
+            $this->updatedBy[] = $updatedBy;
+            $updatedBy->addUpdatedBy($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUpdatedBy(Anime $updatedBy): self
+    {
+        if ($this->updatedBy->removeElement($updatedBy)) {
+            $updatedBy->removeUpdatedBy($this);
+        }
+
+        return $this;
     }
 }
