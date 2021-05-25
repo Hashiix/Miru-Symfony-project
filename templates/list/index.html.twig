@@ -4,29 +4,26 @@
 
     <div class="text-center container-fluid">
         <div class="row d-inline-flex container-fluid">
-            {% for anime in animes %}
                 <div class="col-6 col-sm-4 col-md-3 p-2">
                     <div class="card text-center shadow">
                         <div class="card-header">
-                            <a href="{{ path('description', {id: anime.id}) }}"><strong>{{ anime.title }}</strong></a>
+                            <a href=""><strong></strong></a>
                         </div>
                         <div class="card-body">
                             <div class="card-img-top">
-                                <a href="{{ path('description', {id: anime.id}) }}"><img id="animeimage" src="{{ anime.image }}" width="150" height="200"/></a>
+                                <a href=""><img id="animeimage" src="" width="150" height="200"/></a>
                             </div>
                         </div>
                         <div class="card-footer">
                             {% if not app.user %}
                             {% else %}
-                                <a href="{{ path('edit', {"id": anime.id}) }}" class="btn btn-sm btn-outline-secondary">Modifier </a>
-                                <a href="{{ path('delete', {"id": anime.id}) }}" class="btn btn-sm btn-outline-secondary" onclick="return confirm('Etes-vous sur de vouloir le supprimer ?')">Supprimer</a> <br/>
+                                <a href="" class="btn btn-sm btn-outline-secondary">Modifier </a>
+                                <a href="" class="btn btn-sm btn-outline-secondary" onclick="return confirm('Etes-vous sur de vouloir le supprimer ?')">Supprimer</a> <br/>
                             {% endif %}
                         </div>
                     </div>
                 </div>
-            {% else %}
                 Il n'y a aucun anime pour l'instant, soyez le premier à en écrire un.
-            {% endfor %}
         </div>
     </div>
 
@@ -37,19 +34,10 @@
     {% else %}
         <h1 id="add">Ajouter un Anime</h1>
 
-        {% form_theme animeForm 'bootstrap_4_layout.html.twig' %}
-
-        {{ form_start(animeForm) }}
-
-        {{ form_row(animeForm.title, {'attr': {'placeholder': "Titre de l'anime"}}) }}
-        {{ form_row(animeForm.image, {'attr': {'placeholder': "Lien vers l'image"}}) }}
-        {{ form_row(animeForm.description, {'attr': {'placeholder': "Description de l'anime", 'rows': 5, 'cols': 60}}) }}
-
         <div id="submit">
             <input type="submit" class="btn btn-info" value="Ajouter">
         </div>
 
-        {{ form_end(animeForm) }}
     {% endif %}
 
 {% endblock %}
